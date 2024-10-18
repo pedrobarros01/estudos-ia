@@ -28,14 +28,14 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <Navbar.Header>
           <Navbar.Link titulo="HOME" rota="/" />
           <Navbar.Link titulo="O PROJETO" rota="/projeto" />
           <Navbar.Link titulo="SOBRE NÓS" rota="/nos" />
         </Navbar.Header>
-          {children}
+        {children}
         <Footer />
       </body>
     </html>
