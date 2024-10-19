@@ -1,4 +1,4 @@
-from ..utils.pre_process import transform_colum_date_datasset
+from ...utils.pre_process import extract_datassets_train_test
 from ...Models.Models import *
 import datetime
 import pandas as pd
@@ -12,24 +12,10 @@ import os
 
 class Predict:
     def __init__(self) -> None:
-        self.nome_base_dados = 'database/NVIDIA/NVDA.csv'
-        database_completa = pd.read_csv(self.nome_base_dados, sep=',')
-        datasset = transform_colum_date_datasset(database_completa)
-        total_datasset = len(datasset['Timer_day'])
-        len_treino = round(0.8*total_datasset)
-
+        len_treino, datasset, self.datasset_treino_features, self.datasset_treino_target, self.datasset_teste_features, self.datasset_teste_target  = extract_datassets_train_test()
+        
         self.datas = datasset['Timer_day'][len_treino + 1:].reset_index(drop=True)
         self.modelo_arquivo = 'nvidia_tensorflow_deep/modelo/modelo.h5'
-        features = datasset[['Open', 'High', 'Low', 'Adj Close', 'Volume', 'Timer_day']].copy()
-        target = datasset[['Close']].copy()
-        scaler = MinMaxScaler()
-        features_scaled = scaler.fit_transform(features)
-        # Separar em treino e teste
-        self.datasset_treino_features = features_scaled[:len_treino + 1].copy()
-        self.datasset_treino_target = target[:len_treino + 1].copy()
-        #Salvar Teste
-        self.datasset_teste_features = features_scaled[len_treino + 1:].copy()
-        self.datasset_teste_target = target[len_treino + 1:].copy()
         self.modelo = load_model(self.modelo_arquivo)
     
     def get_relatorio_acuracia(self) -> TrainReportRegressor:

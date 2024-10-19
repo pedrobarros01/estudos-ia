@@ -11,11 +11,19 @@ install: ## Install Python requirements.
 
 .PHONY: nvidia-tf-train
 nvidia-tf-train: ## Run the project.
-	poetry run python -m nvidia-tensorflow-deep.app.train
+	poetry run python -m nvidia_tensorflow_deep.app.train
+
+.PHONY: nvidia-to-train
+nvidia-to-train: ## Run the project.
+	poetry run python -m nvidia_pytorch_deep.app.train
 
 .PHONY: nvidia-tf
 nvidia-tf: ## Run the project.
-	poetry run python -m nvidia-tensorflow-deep.app.predict
+	poetry run python -m nvidia_tensorflow_deep.app.predict
+
+.PHONY: nvidia-to
+nvidia-tf: ## Run the project.
+	poetry run python -m nvidia_pytorch_deep.app.predict
 
 
 .PHONY: api
