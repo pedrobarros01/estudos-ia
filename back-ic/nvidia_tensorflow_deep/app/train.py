@@ -1,4 +1,4 @@
-from ..utils.pre_process import transform_colum_date_datasset
+from ...utils.pre_process import extract_datassets_train_test
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
@@ -8,27 +8,9 @@ import matplotlib.pyplot as plt
 import os
 class Model:
     def __init__(self) -> None:
-        self.nome_base_dados = 'database/NVIDIA/NVDA.csv'
-        database_completa = pd.read_csv(self.nome_base_dados, sep=',')
-        datasset = transform_colum_date_datasset(database_completa)
-        total_datasset = len(datasset['Timer_day'])
-        print(total_datasset)
-        len_treino = round(0.8*total_datasset)
-        features = datasset[['Open', 'High', 'Low', 'Adj Close', 'Volume', 'Timer_day']].copy()
-        target = datasset[['Close']].copy()
-        scaler = MinMaxScaler()
-        features_scaled = scaler.fit_transform(features)
-        # Separar em treino e teste
-        self.datasset_treino_features = features_scaled[:len_treino + 1].copy()
-        self.datasset_treino_target = target[:len_treino + 1].copy()
-        #Salvar Teste
-        self.datasset_teste_features = features_scaled[len_treino + 1:].copy()
-        datasset_teste_features_df = pd.DataFrame(self.datasset_teste_features, columns=['Open', 'High', 'Low', 'Adj Close', 'Volume', 'Timer_day'])
-        self.datasset_teste_target = target[len_treino + 1:].copy()
+        # Separar em treino e test
+        _,_, self.datasset_treino_features, self.datasset_treino_target, self.datasset_teste_features, self.datasset_teste_target  = extract_datassets_train_test()
 
-        if not os.path.exists('database/NVIDIA/teste.csv'):
-            df_teste = pd.concat([datasset_teste_features_df, self.datasset_teste_target], axis=1)
-            df_teste.to_csv('database/NVIDIA/teste.csv', index=False)
 
     def __gerar_grafico(self, df: pd.DataFrame, x_label: str, y_label: str, title: str, nome_arq: str):
         df.plot()
