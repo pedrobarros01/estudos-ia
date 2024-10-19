@@ -35,7 +35,7 @@ class Model:
         plt.title(nome_arq)
         plt.xlabel(x_label)
         plt.ylabel(y_label)
-        plt.savefig(f'nvidia-tensorflow-deep/images/images_treino/{nome_arq}.png', format='png', dpi=300, bbox_inches='tight')
+        plt.savefig(f'nvidia_tensorflow_deep/images/images_treino/{nome_arq}.png', format='png', dpi=300, bbox_inches='tight')
         plt.close()
         
     def train(self):
@@ -56,7 +56,7 @@ class Model:
         self.__gerar_grafico(df_mae, 'Época', 'MAE', 'MAE do modelo', 'mae_nvidia_tensorflow')
         df_mse = df_treino_desempenho[['mse', 'val_mse']]
         self.__gerar_grafico(df_mse, 'Época', 'MSE', 'MSE do modelo', 'mse_nvidia_tensorflow')
-        model.save('nvidia-tensorflow-deep/modelo/modelo.h5')
+        model.save('nvidia_tensorflow_deep/modelo/modelo.h5')
 
     
 if __name__ == '__main__':

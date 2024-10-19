@@ -15,7 +15,12 @@ nvidia-tf-train: ## Run the project.
 
 .PHONY: nvidia-tf
 nvidia-tf: ## Run the project.
-	poetry run python -m nvidia-tensorflow-deep.app.test
+	poetry run python -m nvidia-tensorflow-deep.app.predict
+
+
+.PHONY: api
+api: ## Run the project.
+	fastapi dev main.py
 
 
 .PHONY: clean

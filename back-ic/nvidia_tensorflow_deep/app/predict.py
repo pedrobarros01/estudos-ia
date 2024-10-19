@@ -1,5 +1,6 @@
 from ..utils.pre_process import transform_colum_date_datasset
-from Models.TrainReportRegressor import TrainReportRegressor
+from ...Models.Models import *
+import datetime
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import load_model
@@ -18,7 +19,7 @@ class Predict:
         len_treino = round(0.8*total_datasset)
 
         self.datas = datasset['Timer_day'][len_treino + 1:].reset_index(drop=True)
-        self.modelo_arquivo = 'nvidia-tensorflow-deep/modelo/modelo.h5'
+        self.modelo_arquivo = 'nvidia_tensorflow_deep/modelo/modelo.h5'
         features = datasset[['Open', 'High', 'Low', 'Adj Close', 'Volume', 'Timer_day']].copy()
         target = datasset[['Close']].copy()
         scaler = MinMaxScaler()
@@ -37,15 +38,27 @@ class Predict:
         mae = mean_absolute_error(self.datasset_teste_target, predictions)
         r2 = r2_score(self.datasset_teste_target, predictions)
         mape = np.mean(np.abs((self.datasset_teste_target - predictions) / self.datasset_teste_target)) * 100
+        
         return TrainReportRegressor(mse=mse, mae=mae, r2=r2, mape=mape)
 
-    def predict_user(self):
-        pass
+    def previsoes_user(self, predict: PredictNvidiaBody) -> PredictUser:
+        limit_day = datetime.date(2024, 4, 24)
+        sub = predict.date - limit_day
+        print(sub.days)
+        timer_day = 6117 + sub.days
+
+        df_predict = pd.DataFrame([[predict.open, predict.high, predict.low, 
+                                predict.adj_close, predict.volume, timer_day]])
+        scaler = MinMaxScaler()
+        features_scaled = scaler.fit_transform(df_predict)
+        features_scaled = features_scaled.reshape(1, -1)
+        predicts = self.modelo.predict(features_scaled)
+        
+        return PredictUser(predict=predicts[0][0]*1000)
 
     def previsoes_base(self):
         predictions = self.modelo.predict(self.datasset_teste_features)
         datasset_teste_target_values = self.datasset_teste_target.values  # Convertendo para array
-        print(len(predictions))
 
         plt.figure(figsize=(12, 6))
         plt.plot(self.datas, datasset_teste_target_values, label='Real', marker='o')
@@ -55,12 +68,14 @@ class Predict:
         plt.xlabel('Data')
         plt.ylabel('Preço de Fechamento')
         plt.legend()
-        plt.savefig('nvidia-tensorflow-deep/images/images_teste/previsao_nvidia.png', format='png',  dpi=300, bbox_inches='tight')
+        plt.savefig('nvidia_tensorflow_deep/images/images_teste/previsao_nvidia.png', format='png',  dpi=300, bbox_inches='tight')
 
-if __name__ == '__main__':
+'''if __name__ == '__main__':
     model = Predict()
     model.previsoes_base()
-    print(model.get_relatorio_acuracia().r2)
+    print(model.get_relatorio_acuracia())
+    prev = PredictNvidiaBody(date=datetime.date(2024, 4, 25), open=839.500000, high=840.820007, low=791.830017, adj_close=796.770020, volume=50961600)
+    print(model.previsoes_user(prev))'''
 
 
 
