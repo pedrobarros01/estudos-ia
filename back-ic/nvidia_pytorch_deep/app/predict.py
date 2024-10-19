@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
-from utils.pre_process import extract_datassets_train_test_pytorch
-from Models.Models import *
+from ...utils.pre_process import extract_datassets_train_test_pytorch
+from ...Models.Models import *
 import datetime
 import pandas as pd
 import numpy as np
@@ -85,11 +85,11 @@ class PredictTorch:
         plt.ylabel('Preço de Fechamento')
         plt.legend()
         plt.savefig('nvidia_pytorch_deep/images/images_teste/previsao_nvidia.png', format='png', dpi=300, bbox_inches='tight')
-# Exemplo de uso
+'''# Exemplo de uso
 if __name__ == '__main__':
     model = PredictTorch()
     model.previsoes_base()
     print(model.get_relatorio_acuracia())
     prev = PredictNvidiaBody(date=datetime.date(2024, 4, 25), open=839.500000, high=840.820007, 
                              low=791.830017, adj_close=796.770020, volume=50961600)
-    print(model.previsoes_user(prev))
+    print(model.previsoes_user(prev))'''
