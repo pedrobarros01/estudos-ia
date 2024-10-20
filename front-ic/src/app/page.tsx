@@ -1,5 +1,4 @@
 import { Menu } from "@/components/Menu";
-import Image from "next/image";
 
 interface EstudoLista {
   nome: string;
@@ -8,28 +7,13 @@ interface EstudoLista {
 }
 const Estudos: EstudoLista[] = [
   {
-    nome: "Estudo dos preços de ações da Nvidia com tensorflow",
-    rota: "/deep-learning/nvidia-shares-tensorflow",
+    nome: "Estudo dos preços de ações da Nvidia com TensorFlow",
+    rota: "/deep-learning/nvidia-shares/tensorflow",
     metodo: "DeepLearning",
   },
   {
-    nome: "Estudo dos preços de ações da Nvidia",
-    rota: "/deep-learning/nvidia",
-    metodo: "DeepLearning",
-  },
-  {
-    nome: "Estudo dos preços de ações da Nvidia",
-    rota: "/deep-learning/nvidia",
-    metodo: "DeepLearning",
-  },
-  {
-    nome: "Estudo dos preços de ações da Nvidia",
-    rota: "/deep-learning/nvidia",
-    metodo: "DeepLearning",
-  },
-  {
-    nome: "Estudo dos preços de ações da Nvidia",
-    rota: "/deep-learning/nvidia",
+    nome: "Estudo dos preços de ações da Nvidia com PyTorch",
+    rota: "/deep-learning/nvidia-shares/pytorch",
     metodo: "DeepLearning",
   },
 ];
