@@ -18,3 +18,7 @@ Este repositório contém um projeto desenvolvido por Antônio César, Rafael Lu
 
 - [Python](https://www.python.org/) - Linguagem de programação
 - [FastAPI](https://fastapi.tiangolo.com/) - Framework para construir APIs rápidas
+
+## Videos do roteiro
+### Pytorch e Tensorflow
+[PytorcheTensorflow](https://drive.google.com/file/d/17I0MDZpotBVO98eGlrkfaCdODjWux9XV/view)
