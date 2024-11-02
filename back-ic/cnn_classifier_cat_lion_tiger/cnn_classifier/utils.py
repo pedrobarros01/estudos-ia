@@ -4,7 +4,7 @@ import shutil
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FormatStrFormatter, MultipleLocator
 
-from params import epochs
+from ..params import epochs
 
 
 def clear_folder(folder: str):

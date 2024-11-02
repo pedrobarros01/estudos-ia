@@ -2,13 +2,13 @@ import os
 from PIL import Image
 import numpy as np
 from tensorflow import keras
-from utils import clear_folder
-from params import img_size, color_mode, test_model
-from Models.Models import PredictCNNClassifier
+from .utils import clear_folder
+from ..params import img_size, color_mode, test_model
+from ...Models.Models import PredictCNNClassifier
 
 def run(name_model: str):
     model = keras.models.load_model(f'cnn_classifier_cat_lion_tiger/tmp/{name_model}')
-    labels = os.listdir('imgs')
+    labels = os.listdir('cnn_classifier_cat_lion_tiger/imgs')
     filenames = []
     imgs_arrs = []
     for filename in os.listdir('cnn_classifier_cat_lion_tiger/predict_imgs'):
@@ -22,7 +22,7 @@ def run(name_model: str):
                 imgs_arrs.append(img_arr)
 
     predictions = model.predict(np.array(imgs_arrs))
-    pred = PredictCNNClassifier()
+    pred = None
     for filename, prediction in zip(filenames, predictions):
         best_prediction_idx = np.argmax(prediction)
         best_prediction = prediction[best_prediction_idx]
