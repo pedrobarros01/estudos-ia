@@ -1,1 +1,10 @@
 __pycache__/
+tmp
+imgs/gato/*.jpg
+imgs/leao/*.jpg
+imgs/tigre/*.jpg
+imgs/gato/
+imgs/leao/
+imgs/tigre/
+imgs
+

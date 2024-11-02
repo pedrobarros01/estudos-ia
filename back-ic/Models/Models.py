@@ -17,3 +17,10 @@ class TrainReportRegressor(BaseModel):
 
 class PredictUser(BaseModel):
     predict: float
+
+
+class PredictCNNClassifier(BaseModel):
+    filename: str
+    predict: str
+    percent_predict: float
+
