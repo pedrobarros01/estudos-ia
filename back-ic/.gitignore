@@ -1,5 +1,7 @@
 __pycache__/
-tmp
+cnn_classifier_cat_lion_tiger/tmp/processed_imgs/gato/*.jpg
+cnn_classifier_cat_lion_tiger/tmp/processed_imgs/leao/*.jpg
+cnn_classifier_cat_lion_tiger/tmp/processed_imgs/tigre/*.jpg
 imgs/gato/*.jpg
 imgs/leao/*.jpg
 imgs/tigre/*.jpg
