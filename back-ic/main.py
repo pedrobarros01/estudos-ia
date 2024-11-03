@@ -3,6 +3,7 @@ from .nvidia_tensorflow_deep.app.routes import router_tensorflow
 from .nvidia_pytorch_deep.app.routes import router_pytorch
 from .cnn_classifier_cat_lion_tiger.app.routes import router_cnn
 from .k_means_country.app.routes import router_kmeans
+from .fuzzy_c_means_customer.app.routes import router_fuzzy_cmeans
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -21,11 +22,13 @@ api.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+api.include_router(router_fuzzy_cmeans)
 api.include_router(router_kmeans)
 api.include_router(router_cnn)
 api.include_router(router_tensorflow)
 api.include_router(router_pytorch)
 
+api.mount('/c_means_customer/images_treino', StaticFiles(directory='fuzzy_c_means_customer/images/images_treino'), name='c_means_customer_images')
 api.mount('/k_means_country/images_treino', StaticFiles(directory='k_means_country/images/images_treino'), name='k_means_country_images')
 api.mount('/cnn_classifier_cat_lion_tiger/images_treino', StaticFiles(directory='cnn_classifier_cat_lion_tiger/images/images_treino'), name='cnn_classifier_cat_lion_tiger_images')
 api.mount('/nvidia_tensorflow_deep/images_treino', StaticFiles(directory='nvidia_tensorflow_deep/images/images_treino'), name='nvidia_tensorflow_deep_images')

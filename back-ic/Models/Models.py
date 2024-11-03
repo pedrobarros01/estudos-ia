@@ -28,3 +28,11 @@ class ResultKmeans(BaseModel):
     best_k: float
     best_silhouette_score: float
 
+
+class PredictCMeans(BaseModel):
+    total_price: float
+    quantity: int
+
+class ResultCMeans(BaseModel):
+    cluster: int
+    tipo: str
