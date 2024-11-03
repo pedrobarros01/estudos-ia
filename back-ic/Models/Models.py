@@ -24,3 +24,7 @@ class PredictCNNClassifier(BaseModel):
     predict: str
     percent_predict: float
 
+class ResultKmeans(BaseModel):
+    best_k: float
+    best_silhouette_score: float
+
