@@ -16,11 +16,16 @@ const Estudos: EstudoLista[] = [
     rota: "/deep-learning/nvidia-shares/pytorch",
     metodo: "DeepLearning",
   },
+  {
+    nome: "Comparando Gatos, Leões e Tigres com Classificador de Rede Neural Convolucional 😺🦁🐯",
+    rota: "/cnn-classifier/comparing-felines",
+    metodo: "CNN",
+  },
 ];
 
 export default function Home() {
   return (
-    <main className="flex-grow flex flex-col justify-start items-center w-full pt-3 pb-5">
+    <main className="flex-grow flex flex-col justify-start items-center w-full pt-3 pb-5 mt-14">
       <h1 className="text-2xl mb-5 mt-5">
         Escolha qual o estudo que deseja ver !
       </h1>

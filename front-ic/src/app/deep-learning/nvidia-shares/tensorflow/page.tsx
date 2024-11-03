@@ -68,7 +68,7 @@ export default function NvidiaTensorflow() {
   }, []);
 
   return (
-    <main className="px-32 mt-6">
+    <main className="px-32 mt-20">
       <Title>Nvidia-Shares-Price com TensorFlow</Title>
       <br />
       <Section titulo="Sobre a Base de Dados">
