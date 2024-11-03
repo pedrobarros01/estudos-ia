@@ -4,70 +4,44 @@ import Accuracy from "./accuracy_cnn_classifier.png";
 import Loss from "./loss_cnn_classifier.png";
 import Section from "@/components/Section";
 import Title from "@/components/Title";
-import {
-  getDesempenho,
-  getPredicao,
-  getPrevisaoBase,
-} from "@/services/nvidia/apiPyTorch";
-import {
-  PredicaoParams,
-  PredicaoResultado,
-  PyTorchDesempenhoTreino,
-} from "@/types/apiTypes";
+
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { getPredicao } from "@/services/cnn_classifier/apiCatLionTiger";
+import { PredicaoGatoLeaoTigre } from "@/types/apiTypes";
+
+type PredicaoParams = {
+  file: FileList;
+};
 
 export default function NvidiaPyTorch() {
-  const [desempenho, setDesempenho] = useState<PyTorchDesempenhoTreino>({
-    mae: 0,
-    mape: 0,
-    mse: 0,
-    r2: 0,
-  });
-  const [predicaoImageUrl, setPredicaoImageUrl] = useState<string | null>(null);
-  const [loadingImage, setloadingImage] = useState<boolean>(true);
-  const [predicao, setPredicao] = useState<PredicaoResultado>();
+  const [predicao, setPredicao] = useState<PredicaoGatoLeaoTigre>();
+  const [imagemPreview, setImagemPreview] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     // formState: { errors },
   } = useForm<PredicaoParams>();
 
-  const fetchDesempenho = async () => {
-    try {
-      const data = await getDesempenho();
-      setDesempenho(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const loadPredicaoImage = async () => {
-    try {
-      const url = await getPrevisaoBase();
-      console.log(url);
-      setPredicaoImageUrl(url);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setloadingImage(false);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setImagemPreview(URL.createObjectURL(file));
+      setPredicao(undefined);
     }
   };
 
   const onSubmit: SubmitHandler<PredicaoParams> = async (dadosForm) => {
-    try {
-      const data = await getPredicao(dadosForm);
-      setPredicao(data);
-    } catch (error) {
-      console.log(error);
+    if (dadosForm.file && dadosForm.file[0]) {
+      try {
+        const data = await getPredicao(dadosForm.file[0]);
+        setPredicao(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
-
-  useEffect(() => {
-    fetchDesempenho();
-    loadPredicaoImage();
-  }, []);
 
   return (
     <main className="px-32 mt-20 flex-grow">
@@ -119,7 +93,7 @@ export default function NvidiaPyTorch() {
       <Section titulo="Agora é sua vez! 😺🦁🐯">
         <div className="md:grid md:grid-cols-2 md:gap-4">
           <form
-            className="w-full md:w-4/5 mt-2 grid gap-y-3 "
+            className="w-full md:w-4/5 mt-2 "
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="border p-5 rounded-lg border-dotted">
@@ -128,20 +102,34 @@ export default function NvidiaPyTorch() {
               <input
                 className="w-full text-zinc-100 rounded-sm px-2 py-1"
                 type="file"
-                {...register("date", { required: true })}
+                {...register("file", { required: true })}
+                onChange={(e) => {
+                  handleFileChange(e);
+                }}
               />
             </div>
-            <button className="w-full bg-red-900 hover:bg-red-400 text-zinc-100 rounded-sm mt-3 py-1">
+            <button className="w-full bg-red-900 hover:bg-red-400 text-zinc-100 rounded-sm mt-3 py-1 max-h-14">
               Enviar!
             </button>
           </form>
-        </div>
-        <div className="mt-5 md:mt-12">
-          {predicao && (
-            <Card
-              titulo="Resultado da Predição:"
-              conteudo={"U$ " + `${predicao.predict}`}
-            />
+          {imagemPreview && (
+            <div className="w-full flex items-start justify-start flex-col md:w-auto mt-5 md:mt-0">
+              <h3 className="text-lg">Pré-visualização da Imagem:</h3>
+              <Image
+                src={imagemPreview}
+                width={300}
+                height={300}
+                alt="Pré-visualização da imagem selecionada"
+                className="mt-3 border rounded-lg"
+              />
+              <br />
+              {predicao && (
+                <Card
+                  titulo="Resultado da Predição:"
+                  conteudo={"Eu acho que é um " + `${predicao.predict}!`}
+                />
+              )}
+            </div>
           )}
         </div>
       </Section>

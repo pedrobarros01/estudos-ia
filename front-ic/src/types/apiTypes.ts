@@ -24,3 +24,9 @@ export type PredicaoParams = {
 export type PredicaoResultado = {
   predict: number;
 };
+
+export type PredicaoGatoLeaoTigre = {
+  filename: string;
+  predict: string;
+  percent_predict: number;
+};
