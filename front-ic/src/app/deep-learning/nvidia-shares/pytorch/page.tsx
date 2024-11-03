@@ -6,7 +6,7 @@ import {
   getDesempenho,
   getPredicao,
   getPrevisaoBase,
-} from "@/services/nvidia/apiPytorch";
+} from "@/services/nvidia/apiPyTorch";
 import {
   PredicaoParams,
   PredicaoResultado,
@@ -68,7 +68,7 @@ export default function NvidiaPyTorch() {
   }, []);
 
   return (
-    <main className="px-32 mt-6">
+    <main className="px-32 mt-20">
       <Title>Nvidia-Shares-Price com PyTorch</Title>
       <br />
       <Section titulo="Sobre a Base de Dados">
