@@ -33,10 +33,10 @@ export default function MenuItem({ nome, rota, filhos}: MenuItemProps) {
         ${isOpen ? "bg-red-900" : "hover:bg-red-900"}
         `}
 
-        onClick={toggleMenu}
+        
     >
       {filhos && (<div className="w-full flex justify-start items-center">
-        <span className={`font-bold ${isOpen ? "mb-3" : ""}`} >{nome}</span>
+        <span className={`font-bold ${isOpen ? "mb-3" : ""} h-full w-full`} onClick={toggleMenu} >{nome}</span>
       </div>)}
 
       {
