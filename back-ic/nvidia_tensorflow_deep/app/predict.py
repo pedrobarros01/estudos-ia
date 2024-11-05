@@ -9,6 +9,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 import os
+import joblib
 
 class Predict:
     def __init__(self) -> None:
@@ -35,12 +36,14 @@ class Predict:
 
         df_predict = pd.DataFrame([[predict.open, predict.high, predict.low, 
                                 predict.adj_close, predict.volume, timer_day]])
-        scaler = MinMaxScaler()
-        features_scaled = scaler.fit_transform(df_predict)
+        scaler_path = "nvidia_tensorflow_deep/modelo/scaler.joblib"  # Supondo que o scaler foi salvo após o treinamento
+        scaler = joblib.load(scaler_path)
+        features_scaled = scaler.transform(df_predict)
+        print(features_scaled)
         features_scaled = features_scaled.reshape(1, -1)
         predicts = self.modelo.predict(features_scaled)
         
-        return PredictUser(predict=predicts[0][0]*1000)
+        return PredictUser(predict=predicts[0][0])
 
     def previsoes_base(self):
         predictions = self.modelo.predict(self.datasset_teste_features)

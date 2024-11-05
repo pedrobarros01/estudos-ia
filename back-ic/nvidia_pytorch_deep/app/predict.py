@@ -10,6 +10,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from .torch_model import PredictorModel
+import joblib
 class PredictTorch:
     def __init__(self) -> None:
         len_treino, self.datas, self.datasset_treino_features, self.datasset_treino_target, \
@@ -58,8 +59,9 @@ class PredictTorch:
         # Preparar entrada do usuário para previsão
         df_predict = pd.DataFrame([[predict.open, predict.high, predict.low, 
                                     predict.adj_close, predict.volume, timer_day]])
-        scaler = MinMaxScaler()
-        features_scaled = scaler.fit_transform(df_predict)
+        scaler_path = "nvidia_tensorflow_deep/modelo/scaler.joblib"  # Supondo que o scaler foi salvo após o treinamento
+        scaler = joblib.load(scaler_path)
+        features_scaled = scaler.transform(df_predict)
         features_scaled = features_scaled.reshape(1, -1)
 
         # Previsão usando PyTorch

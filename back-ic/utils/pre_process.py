@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
+import joblib
 def create_sequences(features, target, seq_length=10):
     x, y = [], []
     for i in range(len(features) - seq_length):
@@ -47,6 +48,7 @@ def extract_datassets_train_test():
     target = datasset[['Close']].copy()
     scaler = MinMaxScaler()
     features_scaled = scaler.fit_transform(features)
+    joblib.dump(scaler, "nvidia_tensorflow_deep/modelo/scaler.joblib")
     # Separar em treino e teste
     datasset_treino_features = features_scaled[:len_treino + 1].copy()
     datasset_treino_target = target[:len_treino + 1].copy()
