@@ -66,7 +66,7 @@ class PredictTorch:
 
         # Previsão usando PyTorch
         predicts = self._predict(features_scaled)
-        return PredictUser(predict=predicts[0][0] * 1000)
+        return PredictUser(predict=predicts[0][0])
 
     def previsoes_base(self):
         predictions = self._predict(self.datasset_teste_features)
