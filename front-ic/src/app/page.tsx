@@ -3,35 +3,103 @@ import { Menu } from "@/components/Menu";
 interface EstudoLista {
   nome: string;
   rota: string;
-  metodo: string;
+  estudo: string;
 }
 const Estudos: EstudoLista[] = [
   {
     nome: "Estudo dos preços de ações da Nvidia com TensorFlow",
     rota: "/deep-learning/nvidia-shares/tensorflow",
-    metodo: "DeepLearning",
+    estudo: "DeepLearning",
   },
   {
     nome: "Estudo dos preços de ações da Nvidia com PyTorch",
     rota: "/deep-learning/nvidia-shares/pytorch",
-    metodo: "DeepLearning",
+    estudo: "DeepLearning",
   },
   {
     nome: "Comparando Gatos, Leões e Tigres com Classificador de Rede Neural Convolucional 😺🦁🐯",
     rota: "/cnn-classifier/comparing-felines",
-    metodo: "CNN",
+    estudo: "CNN",
   },
 ];
 
+export interface IArvoreDeEstudos {
+  nome: string;
+  estudos: IArvoreDeEstudos[] | null;
+  rota: string;
+}
+
+const ArvoreDeEstudos : IArvoreDeEstudos[] = [
+  {
+    nome: "Deep Learning",
+    estudos: [{
+      nome: "Estudo dos preços de ações da Nvidia com TensorFlow",
+      rota: "/nvidia-shares/tensorflow",
+      estudos: null
+    }, {
+      nome: "Estudo dos preços de ações da Nvidia com PyTorch",
+      rota: "/nvidia-shares/pytorch",
+      estudos: null
+    }],
+    rota: "/deep-learning"
+  },
+  {
+    nome: "CNN Classifier",
+    estudos: [{
+      nome: "Comparando Gatos, Leões e Tigres com Classificador de Rede Neural Convolucional 😺🦁🐯",
+      rota: "/comparing-felines",
+      estudos: null
+    }],
+    rota: "/cnn-classifier"
+  },
+  {
+    nome: "Unsupervised Learning",
+    estudos: [{
+      nome: "Cluster",
+      rota: "/cluster",
+      estudos: [
+        {
+          nome: "Cluster com K-Means",
+          rota: "/k-means",
+          estudos: null
+        },
+        {
+          nome: "Cluster com C-Means",
+          rota: "/c-means",
+          estudos: null
+        }
+      ]
+    },
+    {
+      nome: "Redes de Kohonen",
+      rota: "/kohonen",
+      estudos: [
+        {
+          nome: "SOM com Minisom",
+          rota: "/minisom",
+          estudos: null
+        },
+        {
+          nome: "SOM com código sem Biblioteca",
+          rota: "/som-without-library",
+          estudos: null
+        }
+      ]
+    }
+  ],
+    rota: "/unsupervised-learning"
+  }
+]
+
 export default function Home() {
   return (
-    <main className="flex-grow flex flex-col justify-start items-center w-full pt-3 pb-5 mt-14">
+    <main className="flex-grow flex flex-col justify-start items-center w-full pt-3 pb-5 mt-14 px-24">
       <h1 className="text-2xl mb-5 mt-5">
         Escolha qual o estudo que deseja ver !
       </h1>
       <Menu.Card>
-        {Estudos.map((value, index) => {
-          return <Menu.Item nome={value.nome} rota={value.rota} key={index} />;
+        {ArvoreDeEstudos.map((value, index) => {
+          return <Menu.Item nome={value.nome} rota={value.rota} filhos={value.estudos} key={index} />;
         })}
       </Menu.Card>
     </main>
