@@ -50,3 +50,7 @@ class BodySystemFuzzy(BaseModel):
 
 class ResponseSystemFuzzy(BaseModel):
     velocity: float
+
+class PerfomanceNeuroFuzzy(BaseModel):
+    mse_final: float
+    peso_medio_final: float
