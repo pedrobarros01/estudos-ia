@@ -148,12 +148,13 @@ export default function NvidiaPyTorch() {
             {resultadoPredict && (
                 <>
             <Card
-              titulo="Resultado da Predição:"
-              conteudo={"Numero do Cluster" + `${resultadoPredict.cluster}`}
+              titulo="Numero do Cluster Predito:"
+              conteudo={`${resultadoPredict.cluster}`}
               />
+              <br/>
             <Card
-              titulo="Resultado da Predição:"
-              conteudo={"Tipo do Cluster" + `${resultadoPredict.tipo}`}
+              titulo="Tipo do Cluster Predito:"
+              conteudo={`${resultadoPredict.tipo}`}
               />
               </>
             )}

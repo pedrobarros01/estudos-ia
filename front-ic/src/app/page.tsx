@@ -33,6 +33,22 @@ const ArvoreDeEstudos : IArvoreDeEstudos[] = [
     rota: "/cnn-classifier"
   },
   {
+    nome: "Fuzzy Logic",
+    estudos: [
+      {
+      nome: "Controle de velocidade de um ventilador baseado em Fuzzy System",
+      rota: "/system",
+      estudos: null
+    },
+      {
+      nome: "Controle de velocidade de um ventilador baseado em Neural Fuzzy",
+      rota: "/neural",
+      estudos: null
+    },
+  ],
+    rota: "/fuzzy"
+  },
+  {
     nome: "Unsupervised Learning",
     estudos: [{
       nome: "Cluster",

@@ -43,3 +43,11 @@ export type ResponseClusterPredict = {
   cluster: number,
   tipo: string
 }
+
+export type BodyIris = {
+  sepal_length: number,
+  sepal_width: number,
+  petal_length: number,
+  petal_width: number,
+
+}

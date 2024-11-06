@@ -9,6 +9,7 @@ router_kohonen_iris = APIRouter()
 @router_kohonen_iris.post('/router_kohonen_iris/prever', status_code=201, tags=['router_kohonen_iris'])
 async def prever(data: BodyIris):
     try:
+        print(data)
         predict(data)
         path_image = 'kohonen_iris/images/images_teste/map_kohonen_com_predicao.png'
         def iterfile():
