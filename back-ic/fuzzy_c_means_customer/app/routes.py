@@ -20,6 +20,7 @@ async def get_desempenho() -> ResultKmeans:
 @router_fuzzy_cmeans.post('/c_means_customer/prever', status_code=201, tags=['c_means_customer'])
 async def predict(user_prev: PredictCMeans) -> ResultCMeans:
     try:
+        
         prev = predict_user_cluster(user_prev.total_price, user_prev.quantity)
         return prev
     except Exception as e:

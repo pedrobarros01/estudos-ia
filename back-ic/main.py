@@ -30,6 +30,7 @@ api.include_router(router_cnn)
 api.include_router(router_tensorflow)
 api.include_router(router_pytorch)
 
+api.mount('/kohonen_manual/images_treino', StaticFiles(directory='kohonen_manual/images/images_treino'), name='kohonen_manual')
 api.mount('/kohonen_iris/images_treino', StaticFiles(directory='kohonen_iris/images/images_treino'), name='kohonen_iris')
 api.mount('/c_means_customer/images_treino', StaticFiles(directory='fuzzy_c_means_customer/images/images_treino'), name='c_means_customer_images')
 api.mount('/k_means_country/images_treino', StaticFiles(directory='k_means_country/images/images_treino'), name='k_means_country_images')

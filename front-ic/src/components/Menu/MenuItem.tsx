@@ -22,7 +22,6 @@ export default function MenuItem({ nome, rota, filhos}: MenuItemProps) {
     <li
       className={`
         text-zinc-100 
-        hover:cursor-pointer 
         p-4 
         mb-3
         flex
@@ -36,7 +35,7 @@ export default function MenuItem({ nome, rota, filhos}: MenuItemProps) {
         
     >
       {filhos && (<div className="w-full flex justify-start items-center">
-        <span className={`font-bold ${isOpen ? "mb-3" : ""} h-full w-full`} onClick={toggleMenu} >{nome}</span>
+        <span className={`font-bold ${isOpen ? "mb-3" : ""} h-full w-full hover:cursor-pointer `} onClick={toggleMenu} >{nome}</span>
       </div>)}
 
       {
