@@ -42,3 +42,11 @@ class BodyIris(BaseModel):
     sepal_width: float
     petal_length: float
     petal_width: float
+
+
+class BodySystemFuzzy(BaseModel):
+    temperature: int
+    humidity: int
+
+class ResponseSystemFuzzy(BaseModel):
+    velocity: float
