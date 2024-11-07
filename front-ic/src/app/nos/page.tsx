@@ -5,12 +5,7 @@ import Title from "@/components/Title";
 import * as React from "react"
 import Image, { StaticImageData } from "next/image";
 import Autoplay from "embla-carousel-autoplay"
-import { useEffect, useState } from "react";
-import { BodyIris, PredicaoCluster, ResponseClusterPredict } from "@/types/apiTypes";
-import { creatNewPredict, getPredicaoCmeans } from "@/services/cluster/apiClusters";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { PostPredict } from "@/services/kohonen/apiKohonen";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Antonio from "./antonio.png"
 import Luan from "./luan.png"
@@ -24,26 +19,42 @@ type Equipe = {
     nome: string
 }
 const arrayEquipe: Equipe[] = [
-    { imagem: Antonio, nome: 'Antonio Cesar' },
+    { imagem: Antonio, nome: 'Antônio César' },
     { imagem: Luan, nome: 'Luan Machado' },
     { imagem: Pedro, nome: 'Pedro Barros' },
-    { imagem: Rafael, nome: 'Rafael Luna' }
+    { imagem: Rafael, nome: 'Rafael Luna' },
+    { imagem: Antonio, nome: 'Antônio César' },
+    { imagem: Luan, nome: 'Luan Machado' },
+    { imagem: Pedro, nome: 'Pedro Barros' },
+    { imagem: Rafael, nome: 'Rafael Luna' },
+    { imagem: Antonio, nome: 'Antônio César' },
+    { imagem: Luan, nome: 'Luan Machado' },
+    { imagem: Pedro, nome: 'Pedro Barros' },
+    { imagem: Rafael, nome: 'Rafael Luna' },
+    { imagem: Antonio, nome: 'Antônio César' },
+    { imagem: Luan, nome: 'Luan Machado' },
+    { imagem: Pedro, nome: 'Pedro Barros' },
+    { imagem: Rafael, nome: 'Rafael Luna' },
+    { imagem: Antonio, nome: 'Antônio César' },
+    { imagem: Luan, nome: 'Luan Machado' },
+    { imagem: Pedro, nome: 'Pedro Barros' },
+    { imagem: Rafael, nome: 'Rafael Luna' },
 ]
 
 
-export default function NvidiaPyTorch() {
+export default function AboutUs() {
     const plugin = React.useRef(
-        Autoplay({ delay: 2000, stopOnInteraction: true })
+        Autoplay({ delay: 2000, stopOnInteraction: false })
       )
     return (
         <main className="px-32 mt-20 flex-grow">
             <Title>
-            Sobre nós
+            Sobre nós ✨
             </Title>
             <br />
             <Section titulo="Sobre a Equipe que Apresentou o Tema de SVM (Support Vector Machines)">
                 <p className="">
-                    A equipe responsável pela apresentação do tema "Support Vector Machines (SVM)" é composta por quatro integrantes: Antonio Cesar, Pedro Barros, Rafael Luna e Luan Machado. Juntos, eles exploraram o conceito de SVM, uma poderosa técnica de aprendizado de máquina usada para classificação e regressão, destacando suas aplicações práticas e teóricas.
+                    A equipe responsável pela apresentação do tema "Support Vector Machines (SVM)" é composta por quatro integrantes: Antônio César, Pedro Barros, Rafael Luna e Luan Machado. Juntos, eles exploraram o conceito de SVM, uma poderosa técnica de aprendizado de máquina usada para classificação e regressão, destacando suas aplicações práticas e teóricas.
                 </p>
                 <br />
                 <p>
@@ -52,15 +63,18 @@ export default function NvidiaPyTorch() {
                 <br />
                 <br />
             </Section>
-            <Section titulo="Equipe">
-                
+            <Section titulo="Conheça nosso Time!">
                 <Carousel
-                plugins={[plugin.current]}
-                className="mb-5 mx-auto max-w-xs"
+                    plugins={[plugin.current]}
+                    className="mb-5 mx-auto z-0"
+                    opts={{
+                        loop: true,
+
+                    }}
                 >
-                    <CarouselContent >
+                    <CarouselContent className="flex w-1/4">
                         {arrayEquipe.map((value, index) => (
-                            <CarouselItem  key={index}>
+                            <CarouselItem key={index}>
                                 <div>
                                     <Card className="bg-red-900">
                                         <CardContent className="flex aspect-square items-center justify-center p-6 flex-col">
@@ -71,11 +85,10 @@ export default function NvidiaPyTorch() {
                                 </div>
                             </CarouselItem>
                         ))}
-                        </CarouselContent>
-                    
-
+                    </CarouselContent>
                 </Carousel>
             </Section>
+
             <Section titulo="Confira nosso Código!">
                 <a
                     href="https://github.com/pedrobarros01/estudos-ia"

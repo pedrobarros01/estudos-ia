@@ -1,8 +1,5 @@
 import { Menu } from "@/components/Menu";
 
-
-
-
 export interface IArvoreDeEstudos {
   nome: string;
   estudos: IArvoreDeEstudos[] | null;

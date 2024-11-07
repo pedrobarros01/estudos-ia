@@ -5,17 +5,15 @@ import Section from "@/components/Section";
 import Title from "@/components/Title";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { BodyFuzzySystem, BodyIris, PredicaoCluster, ResponseClusterPredict, ResponseFuzzySysten } from "@/types/apiTypes";
-import { creatNewPredict, getPredicaoCmeans } from "@/services/cluster/apiClusters";
+import { useState } from "react";
+import { BodyFuzzySystem, ResponseFuzzySysten } from "@/types/apiTypes";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { PostPredict } from "@/services/kohonen/apiKohonen";
 import { PostPredictVelocity } from "@/services/fuzzy/apiSystem";
 
 
 
 
-export default function NvidiaPyTorch() {
+export default function SystemFuzzy() {
     
     const [resultadoPredict, setResultadoPredict] = useState<ResponseFuzzySysten | null>(null);
     
@@ -79,7 +77,7 @@ export default function NvidiaPyTorch() {
                     O código importa as bibliotecas necessárias: <code>numpy</code> para manipulação de arrays, <code>skfuzzy</code> para lógica fuzzy, <code>matplotlib</code> para visualização e <code>joblib</code> para salvar o modelo treinado.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         import numpy as np<br/>
                         import skfuzzy as fuzz<br/>
@@ -95,7 +93,7 @@ export default function NvidiaPyTorch() {
                     Definem-se as variáveis de entrada e saída do sistema fuzzy. As variáveis de entrada são <code>temperatura</code> e <code>umidade</code>, e a variável de saída é <code>velocidade</code>. Essas variáveis são definidas com o intervalo de 0 a 100.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         temperatura = ctrl.Antecedent(np.arange(0, 101, 1), 'temperatura')<br/>
                         umidade = ctrl.Antecedent(np.arange(0, 101, 1), 'umidade')<br/>
@@ -109,7 +107,7 @@ export default function NvidiaPyTorch() {
                     As funções de pertinência são criadas para cada variável. Elas definem como os valores dessas variáveis serão mapeados para os diferentes graus de pertinência fuzzy.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         temperatura['baixa'] = fuzz.trimf(temperatura.universe, [0, 0, 40])<br/>
                         temperatura['media'] = fuzz.trimf(temperatura.universe, [20, 50, 80])<br/>
@@ -129,7 +127,7 @@ export default function NvidiaPyTorch() {
                     As regras fuzzy são definidas para determinar a relação entre a temperatura, a umidade e a velocidade. Por exemplo, se a temperatura for baixa e a umidade também, a velocidade será lenta.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         regra1 = ctrl.Rule(temperatura['baixa'] & umidade['baixa'], velocidade['lenta'])<br/>
                         regra2 = ctrl.Rule(temperatura['media'] & umidade['baixa'], velocidade['media'])<br/>
@@ -145,7 +143,7 @@ export default function NvidiaPyTorch() {
                     O sistema de controle fuzzy é criado utilizando as regras definidas anteriormente. O modelo é então salvo usando o <code>joblib.dump</code>, permitindo o reuso do simulador sem necessidade de treinar novamente.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         controle_velocidade = ctrl.ControlSystem([regra1, regra2, regra3, regra4, regra5])<br/>
                         simulador = ctrl.ControlSystemSimulation(controle_velocidade)<br/>
@@ -159,7 +157,7 @@ export default function NvidiaPyTorch() {
                     A simulação é realizada para 100 amostras de temperatura e umidade aleatórias. O simulador é usado para calcular a velocidade predita com base nas amostras de entrada.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         temperatura_samples = np.random.randint(0, 101, 100)<br/>
                         umidade_samples = np.random.randint(0, 101, 100)<br/>
@@ -179,7 +177,7 @@ export default function NvidiaPyTorch() {
                     Após a simulação, o código gera um gráfico comparando a velocidade real com a velocidade predita. O gráfico é salvo e exibido para análise visual dos resultados.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         plt.plot(velocidade_real, label='Velocidade Real')<br/>
                         plt.plot(velocidade_predita, label='Velocidade Predita', linestyle='--')<br/>

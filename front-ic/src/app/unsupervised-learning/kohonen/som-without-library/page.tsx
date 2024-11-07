@@ -1,47 +1,9 @@
 "use client";
-import Card from "@/components/Card";
-
 import Section from "@/components/Section";
 import Title from "@/components/Title";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { BodyIris, PredicaoCluster, ResponseClusterPredict } from "@/types/apiTypes";
-import { creatNewPredict, getPredicaoCmeans } from "@/services/cluster/apiClusters";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { PostPredict } from "@/services/kohonen/apiKohonen";
 
-
-
-
-export default function NvidiaPyTorch() {
-    
-    const [resultadoPredict, setResultadoPredict] = useState<string | null>(null);
-    
-    const {
-        register,
-        handleSubmit,
-        // formState: { errors },
-      } = useForm<BodyIris>();
-
-
-    const onSubmit: SubmitHandler<BodyIris> = async (dadosForm: BodyIris) => {
-        try {
-            const parsedData: BodyIris = {
-                sepal_length: parseFloat(dadosForm.sepal_length.toString()),
-                sepal_width: parseFloat(dadosForm.sepal_width.toString()),
-                petal_length: parseFloat(dadosForm.petal_length.toString()),
-                petal_width: parseFloat(dadosForm.petal_width.toString()), 
-        };
-        console.log(typeof parsedData.petal_length)
-          const data = await PostPredict(parsedData);
-          setResultadoPredict(data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-
+export default function WithoutMinisom() {
 
     return (
         <main className="px-32 mt-20 flex-grow">
@@ -83,7 +45,7 @@ export default function NvidiaPyTorch() {
         O primeiro passo é carregar a base de dados contendo informações sobre vinhos, removendo as colunas 'quality' e 'Id' de X (dados de entrada), e normalizando os dados.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
         <code className="ml-6" >
             df = pd.read_csv('kohonen_manual/app/WineQT.csv')<br/>
             X = df.drop(['quality', 'Id'], axis=1).values  # Remover a coluna 'quality' e 'Id' de X<br/>
@@ -102,7 +64,7 @@ export default function NvidiaPyTorch() {
         Aqui, é definido o tamanho da grade do mapa (8x8), o número de características de entrada e os parâmetros de treinamento, como o raio de vizinhança (sigma), a taxa de aprendizado e o número de iterações.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
     <code className="ml-6">
         grid_x, grid_y = 8, 8  # Tamanho do mapa SOM<br/>
         input_len = X_scaled.shape[1]<br/>
@@ -120,7 +82,7 @@ export default function NvidiaPyTorch() {
         Inicializa-se uma matriz de pesos aleatórios que representará os neurônios da rede. A matriz tem dimensões (8, 8, número de características), já que a rede é 2D com 8x8 neurônios e cada neurônio tem um vetor de pesos correspondente ao número de características.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
         <code className="ml-6">
             weights = np.random.rand(grid_x, grid_y, input_len)
         </code>
@@ -132,7 +94,7 @@ export default function NvidiaPyTorch() {
         A função <code>euclidean_distance</code> calcula a distância entre dois pontos no espaço vetorial, que será utilizada para determinar o melhor neurônio (BMU - Best Matching Unit) para cada amostra.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
     <code className="ml-6">
         def euclidean_distance(a, b):<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;return np.sqrt(np.sum((a - b) ** 2))
@@ -145,7 +107,7 @@ export default function NvidiaPyTorch() {
         A função <code>find_bmu</code> percorre todos os neurônios da grade e encontra o neurônio cujo vetor de pesos tem a menor distância em relação à amostra de entrada.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
     <code className="ml-6">
         def find_bmu(x):<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;bmu_idx = np.argmin([[euclidean_distance(x, weights[i, j]) for j in range(grid_y)] for i in range(grid_x)])<br/>
@@ -159,7 +121,7 @@ export default function NvidiaPyTorch() {
         A função <code>update_weights</code> ajusta os pesos dos neurônios com base na distância ao BMU e a taxa de aprendizado decrescente ao longo das iterações. Esse ajuste permite que os neurônios se "aproximem" das amostras de dados durante o treinamento.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
     <code className="ml-6">
         def update_weights(x, bmu, iteration, num_iterations):<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;learning_decay = learning_rate * (1 - iteration / num_iterations)<br/>
@@ -179,7 +141,7 @@ export default function NvidiaPyTorch() {
         O laço <code>for iteration in range(num_iterations):</code> percorre o número de iterações, ajustando os pesos a cada ciclo. Dentro de cada iteração, a cada amostra é calculado o BMU e os pesos são atualizados.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
     <code className="ml-6">
         for iteration in range(num_iterations):<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;for sample in X_scaled:<br/>
@@ -194,7 +156,7 @@ export default function NvidiaPyTorch() {
         Após o treinamento, a visualização é gerada plotando os BMUs para cada amostra de vinho, usando cores diferentes para indicar a qualidade. Isso permite uma análise visual dos agrupamentos formados pela Rede de Kohonen.
     </p>
     <br />
-    <div className="bg-zinc-800 flex justify-start rounded-lg">
+    <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
     <code className="ml-6">
         colors = plt.cm.tab10(np.linspace(0, 1, 11))<br></br>
         plt.figure(figsize=(8, 8))<br></br>

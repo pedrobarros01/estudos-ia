@@ -16,7 +16,7 @@ type ParamsForm = {
   }
 
 
-export default function NvidiaPyTorch() {
+export default function Cmeans() {
     const [predicao, setPredicao] = useState<PredicaoCluster>({ best_k: 0, best_silhouette_score: 0 });
     const [resultadoPredict, setResultadoPredict] = useState<ResponseClusterPredict>();
 

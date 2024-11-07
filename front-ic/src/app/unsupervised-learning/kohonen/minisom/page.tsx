@@ -1,20 +1,15 @@
 "use client";
-import Card from "@/components/Card";
-
 import Section from "@/components/Section";
 import Title from "@/components/Title";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { BodyIris, PredicaoCluster, ResponseClusterPredict } from "@/types/apiTypes";
-import { creatNewPredict, getPredicaoCmeans } from "@/services/cluster/apiClusters";
+import { useState } from "react";
+import { BodyIris } from "@/types/apiTypes";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PostPredict } from "@/services/kohonen/apiKohonen";
 
 
-
-
-export default function NvidiaPyTorch() {
+export default function Minisom() {
     
     const [resultadoPredict, setResultadoPredict] = useState<string | null>(null);
     

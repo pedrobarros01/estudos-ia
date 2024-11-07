@@ -1,25 +1,13 @@
 "use client";
-import Card from "@/components/Card";
-
 import Section from "@/components/Section";
 import Title from "@/components/Title";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { BodyIris, PredicaoCluster, ResponseClusterPredict } from "@/types/apiTypes";
-import { creatNewPredict, getPredicaoCmeans } from "@/services/cluster/apiClusters";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { PostPredict } from "@/services/kohonen/apiKohonen";
-
-
-
-
-export default function NvidiaPyTorch() {
+export default function AboutProject() {
 
     return (
         <main className="px-32 mt-20 flex-grow">
             <Title>
-            Sobre o Projeto
+            Sobre o Projeto 😎
             </Title>
             <br />
             <Section titulo="Sobre o Projeto Web de Repositório de Roteiros de Tópicos Avançados em Inteligência Computacional">

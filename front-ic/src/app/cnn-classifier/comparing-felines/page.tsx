@@ -15,7 +15,7 @@ type PredicaoParams = {
   file: FileList;
 };
 
-export default function NvidiaPyTorch() {
+export default function ComparingFelines() {
   const [predicao, setPredicao] = useState<PredicaoGatoLeaoTigre>();
   const [imagemPreview, setImagemPreview] = useState<string | null>(null);
   const {

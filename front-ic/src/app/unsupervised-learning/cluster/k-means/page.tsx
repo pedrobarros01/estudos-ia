@@ -10,7 +10,7 @@ import { PredicaoCluster } from "@/types/apiTypes";
 import { getPredicaoKmeans } from "@/services/cluster/apiClusters";
 
 
-export default function NvidiaPyTorch() {
+export default function Kmeans() {
     const [predicao, setPredicao] = useState<PredicaoCluster>({best_k : 0, best_silhouette_score: 0});
 
     const fetchPredicao = async () => {

@@ -6,17 +6,14 @@ import Title from "@/components/Title";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { BodyFuzzySystem, BodyIris, MetricasNeuralFuzzy, PredicaoCluster, ResponseClusterPredict, ResponseFuzzySysten } from "@/types/apiTypes";
-import { creatNewPredict, getPredicaoCmeans } from "@/services/cluster/apiClusters";
+import { BodyFuzzySystem, MetricasNeuralFuzzy, ResponseFuzzySysten } from "@/types/apiTypes";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { PostPredict } from "@/services/kohonen/apiKohonen";
-import { PostPredictVelocity } from "@/services/fuzzy/apiSystem";
 import { GetMetricas, PredictNeuralFuzzy } from "@/services/fuzzy/apiNeural";
 
 
 
 
-export default function NvidiaPyTorch() {
+export default function NeuralFuzzy() {
     
     const [resultadoPredict, setResultadoPredict] = useState<ResponseFuzzySysten | null>(null);
     const [desempenho, setDesempenho] = useState<MetricasNeuralFuzzy>();
@@ -100,9 +97,9 @@ export default function NvidiaPyTorch() {
                     O código importa as bibliotecas necessárias: <code>numpy</code> para manipulação de arrays, <code>matplotlib</code> para visualização, <code>joblib</code> para salvar o modelo treinado, e <code>json</code> para salvar os parâmetros de normalização e métricas de treinamento.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
-                        import numpy as np<br/>
+                        import numpy as np<br/> teste
                         import matplotlib.pyplot as plt<br/>
                         import joblib<br/>
                         import json
@@ -115,7 +112,7 @@ export default function NvidiaPyTorch() {
                     O código define a classe <code>ANFIS</code>, que implementa o sistema neuro fuzzy para controle de velocidade. Essa classe contém métodos para calcular as funções de pertinência, realizar a propagação das entradas e ajustar os parâmetros do modelo durante o treinamento.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                 <code className="ml-6">
             class ANFIS:<br/>
             &nbsp;&nbsp;&nbsp;def __init__(self, n_inputs, n_rules, learning_rate=0.01):<br/>
@@ -164,7 +161,7 @@ export default function NvidiaPyTorch() {
                     Dados simulados de temperatura e umidade são criados e normalizados para a faixa [0, 1] para o treinamento do modelo. Além disso, os parâmetros de normalização (mínimos e máximos) são salvos em um arquivo JSON para futuras previsões.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         temperaturas = np.random.uniform(20, 40, 100)<br/>
                         umidades = np.random.uniform(30, 90, 100)<br/>
@@ -187,7 +184,7 @@ export default function NvidiaPyTorch() {
                     O modelo ANFIS é treinado usando os dados normalizados. Durante o treinamento, o modelo ajusta seus parâmetros para minimizar o erro entre as saídas preditas e as reais. Após o treinamento, os parâmetros do modelo são salvos em um arquivo JSON.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         anfis = ANFIS(n_inputs=2, n_rules=3)<br/>
                         anfis.train(X, y, epochs=100)<br/>
@@ -205,7 +202,7 @@ export default function NvidiaPyTorch() {
                     Após o treinamento, o modelo é usado para realizar previsões de velocidade com base nos dados de entrada. A saída predita é comparada com a velocidade real gerada nos dados simulados.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         outputs, _ = anfis.forward(X)<br/>
                         plt.plot(y, label='Velocidade Real')<br/>
@@ -224,7 +221,7 @@ export default function NvidiaPyTorch() {
                     O gráfico comparando a velocidade real com a velocidade predita é salvo como uma imagem. Isso permite a visualização do desempenho do modelo e a análise de sua capacidade de previsão.
                 </p>
                 <br />
-                <div className="bg-zinc-800 flex justify-start rounded-lg">
+                <div className="bg-zinc-800 flex justify-start rounded-lg py-3 mb-4">
                     <code className="ml-6">
                         plt.show()  # Exibir o gráfico
                     </code>
