@@ -51,3 +51,16 @@ export type BodyIris = {
   petal_width: number,
 
 }
+
+export type BodyFuzzySystem = {
+  temperature: number,
+  humidity: number
+}
+export type ResponseFuzzySysten = {
+  velocity: number
+}
+
+export type MetricasNeuralFuzzy = {
+  mse_final: number,
+  peso_medio_final: number
+}
