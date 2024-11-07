@@ -1,27 +1,7 @@
 import { Menu } from "@/components/Menu";
 
-interface EstudoLista {
-  nome: string;
-  rota: string;
-  estudo: string;
-}
-const Estudos: EstudoLista[] = [
-  {
-    nome: "Estudo dos preços de ações da Nvidia com TensorFlow",
-    rota: "/deep-learning/nvidia-shares/tensorflow",
-    estudo: "DeepLearning",
-  },
-  {
-    nome: "Estudo dos preços de ações da Nvidia com PyTorch",
-    rota: "/deep-learning/nvidia-shares/pytorch",
-    estudo: "DeepLearning",
-  },
-  {
-    nome: "Comparando Gatos, Leões e Tigres com Classificador de Rede Neural Convolucional 😺🦁🐯",
-    rota: "/cnn-classifier/comparing-felines",
-    estudo: "CNN",
-  },
-];
+
+
 
 export interface IArvoreDeEstudos {
   nome: string;
@@ -51,6 +31,22 @@ const ArvoreDeEstudos : IArvoreDeEstudos[] = [
       estudos: null
     }],
     rota: "/cnn-classifier"
+  },
+  {
+    nome: "Fuzzy Logic",
+    estudos: [
+      {
+      nome: "Controle de velocidade de um ventilador baseado em Fuzzy System",
+      rota: "/system",
+      estudos: null
+    },
+      {
+      nome: "Controle de velocidade de um ventilador baseado em Neural Fuzzy",
+      rota: "/neural",
+      estudos: null
+    },
+  ],
+    rota: "/fuzzy"
   },
   {
     nome: "Unsupervised Learning",

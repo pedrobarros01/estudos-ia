@@ -30,3 +30,24 @@ export type PredicaoGatoLeaoTigre = {
   predict: string;
   percent_predict: number;
 };
+
+
+export type PredicaoCluster = {
+
+  best_k: number,
+  best_silhouette_score: number
+
+}
+
+export type ResponseClusterPredict = {
+  cluster: number,
+  tipo: string
+}
+
+export type BodyIris = {
+  sepal_length: number,
+  sepal_width: number,
+  petal_length: number,
+  petal_width: number,
+
+}

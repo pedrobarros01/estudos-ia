@@ -24,6 +24,5 @@ def predict_user_cluster(total_price, quantity) -> ResultCMeans:
         cluster_description = "Cliente que pega e paga pouco"
     else:
         cluster_description = "Cliente que pega e paga muito"
-
     return ResultCMeans(cluster=user_cluster, tipo=cluster_description)
 
