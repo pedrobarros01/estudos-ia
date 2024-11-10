@@ -22,11 +22,18 @@ const ArvoreDeEstudos : IArvoreDeEstudos[] = [
   },
   {
     nome: "CNN Classifier",
-    estudos: [{
+    estudos: [
+      {
       nome: "Comparando Gatos, Leões e Tigres com Classificador de Rede Neural Convolucional 😺🦁🐯",
       rota: "/comparing-felines",
       estudos: null
-    }],
+    },
+    {
+      nome: "Comparando Passaros e Drones com Classificador de Rede Neural Convolucional com Transfer Learning 🐦 🤖",
+      rota: "/comparing-bird-drone",
+      estudos: null
+    }
+  ],
     rota: "/cnn-classifier"
   },
   {
