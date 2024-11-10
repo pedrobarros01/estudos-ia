@@ -35,4 +35,5 @@ O cnn_classifier_bird_drones não tem o modelo treinado por conta do peso do arq
 
 ## Video de demonstração
 
+https://github.com/user-attachments/assets/20dc42a1-7c99-4e81-99ee-995e670e1027
 
