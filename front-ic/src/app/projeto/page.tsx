@@ -5,35 +5,40 @@ import Title from "@/components/Title";
 export default function AboutProject() {
 
     return (
-        <main className="px-32 mt-20 flex-grow">
+        <main className="px-32 mt-20 flex-grow text-zinc-100">
             <Title>
-            Sobre o Projeto 😎
+                Sobre o Projeto 🚀
             </Title>
             <br />
-            <Section titulo="Sobre o Projeto Web de Repositório de Roteiros de Tópicos Avançados em Inteligência Computacional">
-                <p className="">
-                    O projeto web desenvolvido tem como objetivo servir como repositório para armazenar e compartilhar os roteiros das aulas e atividades realizadas na disciplina "Tópicos Avançados em Inteligência Computacional". Esta plataforma foi projetada para fornecer acesso fácil e organizado ao conteúdo abordado ao longo da matéria, permitindo que os alunos e interessados acessem, revisem e aprendam com os materiais apresentados durante o curso.
-                </p>
-                <br />
+            <Section titulo="🔍 Visão Geral do Projeto">
                 <p>
-                    O sistema foi construído para proporcionar uma navegação simples, com a possibilidade de consultar os roteiros de forma intuitiva. A interface permite a busca por tópicos específicos abordados em cada aula, e o acesso aos materiais de forma estruturada, com a organização dos roteiros por tema, data ou tipo de atividade. A plataforma foi concebida para ser dinâmica, garantindo que os alunos possam acompanhar o progresso das aulas e realizar consultas rápidas a conteúdos relevantes.
-                </p>
-                <br />
-                <p>
-                    Além de armazenar roteiros, o projeto também permite que novos materiais sejam facilmente adicionados, mantendo a atualização constante com os conteúdos mais recentes. A ideia principal é facilitar o estudo e a pesquisa por parte dos alunos, além de servir como um repositório centralizado para consultas futuras. A aplicação foi pensada para ser acessível e eficiente, com foco na experiência do usuário, oferecendo uma maneira organizada e prática de consultar o conteúdo da disciplina.
-                </p>
-                <br />
-                <p>
-                    O projeto está em constante evolução e busca integrar novas funcionalidades conforme necessário. Seu objetivo é tornar o aprendizado de Tópicos Avançados em Inteligência Computacional mais acessível, com uma plataforma que centralize todo o material didático de forma colaborativa e atualizada, permitindo aos alunos um melhor aproveitamento do conteúdo e das atividades propostas ao longo do semestre.
+                    Este projeto web foi criado para ser um <b className="text-yellow-700">repositório organizado e acessível</b> dos roteiros de aulas e atividades da disciplina "Tópicos Avançados em Inteligência Computacional". A plataforma facilita o acesso aos conteúdos da matéria, permitindo que alunos e interessados <b className="text-yellow-700">explorem e revisem</b> o material de forma prática e intuitiva. 📚
                 </p>
             </Section>
-            <Section titulo="Confira nosso Código!">
+            <br />
+            <Section titulo="✨ Funcionalidades Principais">
+                <ul className="list-disc ml-5">
+                    <li>🎯 <b className="text-yellow-700">Navegação intuitiva</b> para encontrar tópicos e materiais específicos das aulas.</li>
+                    <li>📅 Organização de roteiros por <b className="text-yellow-700">tema ou tipo de atividade</b>.</li>
+                    <li>📈 Possibilidade de acompanhamento do <b className="text-yellow-700">progresso das aulas</b>.</li>
+                    <li>📥 <b className="text-yellow-700">Adição fácil</b> de novos materiais, mantendo o repositório sempre atualizado.</li>
+                    <li>🔄 Uma experiência dinâmica e acessível, focada no usuário e na praticidade.</li>
+                </ul>
+            </Section>
+            <br />
+            <Section titulo="🌟 Benefícios para os Alunos">
+                <p>
+                    A plataforma foi projetada para ser uma <b className="text-yellow-700">ferramenta de apoio contínuo</b>, centralizando todos os materiais de forma colaborativa. Os alunos podem acessar rever conceitos e consultar atividades passadas, <b className="text-yellow-700">maximizando o aprendizado</b> e otimizando o tempo de estudo. 🎓
+                </p>
+            </Section>
+            <br />
+            <Section titulo="👨‍💻 Confira nosso Código!">
                 <a
                     href="https://github.com/pedrobarros01/estudos-ia"
                     target="_blank"
-                    className="font-light hover:text-red-800 underline text-zinc-100 italic"
+                    className="font-light hover:text-yellow-800 underline text-zinc-100 italic"
                 >
-                    Acesse aqui o nosso repositório no GitHub!
+                    🔗 Acesse nosso repositório no GitHub!
                 </a>
             </Section>
         </main>
