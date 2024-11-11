@@ -60,7 +60,7 @@ export default function ComparingFelines() {
         <p>
           Com a utilização do transfer learning, a CNN é ajustada para identificar características específicas que diferenciam pássaros de drones, mesmo em condições de luz variadas e contextos complexos. Isso permite que o modelo apresente um desempenho otimizado, aproveitando a base de conhecimento prévia da VGG16, mas com refinamentos focados no conjunto de dados especializado. O resultado é um classificador rápido e confiável, capaz de contribuir para soluções modernas em vigilância e reconhecimento de imagens.
         </p>
-    </Section>
+      </Section>
 
       <Section titulo="Sobre o Desempenho da Inteligência Artificial">
         <div className="grid md:grid-cols-2 gap-8">
@@ -82,6 +82,8 @@ export default function ComparingFelines() {
       </Section>
 
       <Section titulo="Agora é sua vez! 🐦 🤖">
+        <p className="font-bold text-orange-400 text-xl md:w-3/5 mb-5">Ops... a sua versão atual não suporta a predição desse algoritmo!<br />Caso queira rodar a predição localmente, por favor confira nosso código no Github no final desta página.</p>
+
         <div className="md:grid md:grid-cols-2 md:gap-4">
           <form
             className="w-full md:w-4/5 mt-2 "
@@ -93,13 +95,14 @@ export default function ComparingFelines() {
               <input
                 className="w-full text-zinc-100 rounded-sm px-2 py-1"
                 type="file"
+                disabled
                 {...register("file", { required: true })}
                 onChange={(e) => {
                   handleFileChange(e);
                 }}
               />
             </div>
-            <button className="w-full bg-red-900 hover:bg-red-400 text-zinc-100 rounded-sm mt-3 py-1 max-h-14">
+            <button className="w-full bg-red-900 cursor-not-allowed text-zinc-100 rounded-sm mt-3 py-1 max-h-14" disabled>
               Enviar!
             </button>
           </form>
