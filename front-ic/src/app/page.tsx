@@ -95,11 +95,11 @@ export default function Home() {
   return (
     <main className="flex-grow flex flex-col justify-start items-center w-full pt-3 pb-5 mt-14 px-24">
       <h1 className="text-2xl mb-5 mt-5 text-[#ededed]">
-        Escolha qual o estudo que deseja ver !
+        😎 Escolha um roteiro de estudo que deseja visualizar! 😎
       </h1>
       <Menu.Card>
         {ArvoreDeEstudos.map((value, index) => {
-          return <Menu.Item nome={value.nome} rota={value.rota} filhos={value.estudos} key={index} />;
+          return <Menu.Item nome={value.nome} rota={value.rota} filhos={value.estudos} key={index} startOpen/>;
         })}
       </Menu.Card>
     </main>

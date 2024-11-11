@@ -8,11 +8,12 @@ interface MenuItemProps {
   nome: string;
   rota: string;
   filhos: Array<IArvoreDeEstudos> | null;
+  startOpen?: boolean
 }
 
-export default function MenuItem({ nome, rota, filhos}: MenuItemProps) {
+export default function MenuItem({ nome, rota, filhos, startOpen = false}: MenuItemProps) {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(startOpen);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
