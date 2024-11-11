@@ -115,6 +115,7 @@ export default function Cmeans() {
             </Section>
 
             <Section titulo="Agora é sua vez!">
+          <p className="font-bold text-orange-400 text-xl md:w-3/5 mb-5">Ops... a sua versão atual não suporta a predição desse algoritmo!<br/>Caso queira rodar a predição localmente, por favor confira nosso código no Github no final desta página.</p>
         <div className="md:grid md:grid-cols-2 md:gap-4">
           <div>
             <h3>Digite as Entradas Solicitadas:</h3>
@@ -128,6 +129,7 @@ export default function Cmeans() {
                 <input
                   className="w-full text-zinc-900 rounded-sm px-2 py-1"
                   type="number"
+                  disabled
                   {...register("quantity", { required: true })}
                 />
               </label>
@@ -136,10 +138,11 @@ export default function Cmeans() {
                 <br />
                 <input
                   className="w-full text-zinc-900 rounded-sm px-2 py-1"
+                  disabled
                   {...register("total_price", { required: true })}
                 />
               </label>
-              <button className="w-full bg-red-900 hover:bg-red-400 text-zinc-100 rounded-sm mt-3 py-1">
+              <button className="w-full bg-red-900 cursor-not-allowed text-zinc-100 rounded-sm mt-3 py-1" disabled>
                 Enviar!
               </button>
               </form>
